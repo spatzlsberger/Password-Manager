@@ -6,14 +6,12 @@ public class Main {
 	public static void main(String[] args) throws GeneralSecurityException {
 		
 		//connect to database
+		SingletonUtility utility = SingletonUtility.getInstance();
+		
+		int[] possibleAnswers = new int[]{1,2};
+		int response = utility.validate_input(possibleAnswers);
 		
 		
-		Scanner in = new Scanner(System.in);
-		
-		greetingMessage();
-		
-		
-		int response = get_response(in);
 		
 		if(response == 1){
 			//TODO handle return 
