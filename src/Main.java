@@ -7,8 +7,9 @@ public class Main {
 		
 		//connect to database
 		SingletonUtility utility = SingletonUtility.getInstance();
-		
+		Scanner in = new Scanner(System.in);
 		int[] possibleAnswers = new int[]{1,2};
+		greetingMessage();
 		int response = utility.validate_input(possibleAnswers);
 		
 		

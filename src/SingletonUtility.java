@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class SingletonUtility {
 	
@@ -23,6 +24,8 @@ public class SingletonUtility {
 			promptMessage = "Your Selection: ";
 		
 		int ret_Value = -1;
+		Arrays.sort(possibleAnswers);
+		
 		
 		while(true){
 			System.out.print(promptMessage);
@@ -32,15 +35,18 @@ public class SingletonUtility {
 			try{
 				ret_Value = Integer.parseInt(entered_text);
 			}catch(Exception e){
-				printInvalidMess(entered_text);
+				printInvalidMess(entered_text,possibleAnswers);
 				continue;
 			}
 			//TODO implement array passing in to check
-			if(ret_Value == 1 || ret_Value == 2){
+			
+			//if entered value in array of possibleAnswers, we found a good input
+
+			if(Arrays.binarySearch(possibleAnswers, ret_Value) >= 0){
 				break;
 				
 			}else{
-				printInvalidMess(entered_text);
+				printInvalidMess(entered_text,possibleAnswers);
 				continue;
 			}
 		}
@@ -50,16 +56,18 @@ public class SingletonUtility {
 		return ret_Value;
 	}
 	
-	@SuppressWarnings("unused")
 	public int validate_input(int[] possibleAnswers){
-		return validate_input(input,possibleAnswers,"");
+		return validate_input(possibleAnswers,"");
 	}
 		
-	private void printInvalidMess(String entered_text){
+	private void printInvalidMess(String entered_text, int[] possibleAnswers){
 		
-		System.out.println("Your selection " + entered_text + " is not 1 or 2.");
-		System.out.println("Please try again. \n");
-		
+		System.out.println("Your selection: " + entered_text + " is not an accepted value.");
+		System.out.println("Accepted values are: ");
+		for (int num : possibleAnswers){
+			System.out.print(Integer.toString(num) + ", ");
+		}
+		System.out.print("\n");
 	}
 
 }

@@ -11,7 +11,7 @@ public class ReturnUser {
 		System.out.print("Password: ");
 		String password = in.nextLine();
 		
-		//System.out.println("Username: " + aead.encrypt(username.getBytes(),aad) + " Password: " + aead.encrypt(password.getBytes(), aad));
+		
 		login(username,password);
 	}
 
